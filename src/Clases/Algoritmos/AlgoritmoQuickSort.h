@@ -9,4 +9,16 @@
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
 
-#include "../Clases/DivideYVenceras.h"
+#ifndef ALGORITMO_QUICKSORT_H
+#define ALGORITMO_QUICKSORT_H
+
+#include "../DivideYVenceras.h"
+
+class QuickSort {
+ public:
+  QuickSort() = default;
+  ~QuickSort() = default;
+ private:
+};
+
+#endif

@@ -9,4 +9,14 @@
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
 
-#include "../Clases/DivideYVenceras.h"
+#ifndef SOLUCION_QUICK_SORT_H
+#define SOLUCION_QUICK_SORT_H
+
+#include "../Solucion.h"
+
+class SolucionQuickSort : public Solucion {
+  public:
+
+};
+
+#endif

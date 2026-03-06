@@ -8,3 +8,15 @@
  * @brief   Implementacion de un simulador de algoritmos de divide y venceras,
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
+
+#ifndef SOLUCION_MERGE_SORT_H
+#define SOLUCION_MERGE_SORT_H
+
+#include "../Solucion.h"
+
+class SolucionMergeSort : public Solucion {
+  public:
+
+};
+
+#endif

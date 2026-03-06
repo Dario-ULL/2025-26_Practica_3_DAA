@@ -9,4 +9,4 @@
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
 
-#include "../Clases/DivideYVenceras.h"
+#include "../Clases/Solucion.h"

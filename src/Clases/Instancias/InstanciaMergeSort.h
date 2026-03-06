@@ -9,4 +9,14 @@
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
 
-#include "../Clases/DivideYVenceras.h"
+#ifndef INSTANCIA_MERGESORT_H
+#define INSTANCIA_MERGESORT_H
+
+#include "../Instancia.h"
+
+class InstanciaMergeSort {
+ public:
+
+};
+
+#endif

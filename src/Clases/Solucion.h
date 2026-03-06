@@ -9,4 +9,14 @@
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
 
-#include "../Clases/DivideYVenceras.h"
+#ifndef SOLUCION_H
+#define SOLUCION_H
+
+class Solucion {
+ public:
+  Solucion() = default;
+  ~Solucion() = default;
+ private:
+};
+
+#endif

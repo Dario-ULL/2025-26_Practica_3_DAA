@@ -8,3 +8,5 @@
  * @brief   Implementacion de un simulador de algoritmos de divide y venceras,
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
+
+#include "../../Clases/Instancias/InstanciaQuickSort.h"

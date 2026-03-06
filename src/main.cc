@@ -18,8 +18,8 @@
 #include "Clases/DivideYVenceras.h"
 #include "Clases/LeerFichero.h"
 #include "Clases/EscribirFichero.h"
-#include "Clases/QuickSort.h"
-#include "Clases/MergeSort.h"
+#include "Clases/Algoritmos/AlgoritmoMergeSort.h"
+#include "Clases/Algoritmos/AlgoritmoQuickSort.h"
 
 int main(int argc, char* argv[]) {
 

@@ -9,4 +9,17 @@
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
 
-#include "../Clases/DivideYVenceras.h"
+#ifndef VECTORINSTANCIA_H
+#define VECTORINSTANCIA_H
+
+#include <vector>
+
+class VectorInstancia {
+ public:
+  VectorInstancia() = default;
+  ~VectorInstancia() = default;
+ private:
+  std::vector<int> vector_;
+};
+
+#endif

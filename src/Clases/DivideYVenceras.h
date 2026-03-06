@@ -12,4 +12,11 @@
 #ifndef DIVIDE_Y_VENCERAS_H
 #define DIVIDE_Y_VENCERAS_H
 
+class DivideYVenceras {
+ public:
+  DivideYVenceras() = default;
+  ~DivideYVenceras() = default;
+ private:
+};
+
 #endif

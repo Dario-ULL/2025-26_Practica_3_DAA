@@ -8,3 +8,15 @@
  * @brief   Implementacion de un simulador de algoritmos de divide y venceras,
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
+
+#ifndef LEER_FICHERO_H
+#define LEER_FICHERO_H
+
+class LeerFichero {
+ public:
+  LeerFichero() = default;
+  ~LeerFichero() = default;
+ private:
+};
+
+#endif

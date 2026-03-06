@@ -9,4 +9,16 @@
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
 
-#include "../Clases/DivideYVenceras.h"
+#ifndef ALGORITMO_MERGESORT_H
+#define ALGORITMO_MERGESORT_H
+
+#include "../DivideYVenceras.h"
+
+class MergeSort {
+ public:
+  MergeSort() = default;
+  ~MergeSort() = default;
+ private:
+};
+
+#endif

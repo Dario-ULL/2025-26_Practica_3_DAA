@@ -12,4 +12,11 @@
 #ifndef ALGORITMO_H
 #define ALGORITMO_H
 
+class Algoritmo {
+ public:
+  Algoritmo() = default;
+  ~Algoritmo() = default;
+ private:
+};
+
 #endif
