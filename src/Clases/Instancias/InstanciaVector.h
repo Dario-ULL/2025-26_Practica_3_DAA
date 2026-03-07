@@ -9,13 +9,27 @@
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
 
-#ifndef INSTANCIA_MERGESORT_H
-#define INSTANCIA_MERGESORT_H
+#ifndef INSTANCIA_VECTOR_H
+#define INSTANCIA_VECTOR_H
 
 #include "../Instancia.h"
+#include <vector>
 
-class InstanciaMergeSort {
+class InstanciaVector : Instancia {
  public:
+   InstanciaVector();
+   ~InstanciaVector() = default;
+   InstanciaVector(int size);
+
+   void mostrarValores();
+
+   void setValue(int pos, int valor);
+
+   int getValue(int pos);
+   int getSize();
+
+private:
+   std::vector<int> vector_;
 
 };
 

@@ -9,13 +9,15 @@
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
 
-#ifndef SOLUCION_MERGE_SORT_H
-#define SOLUCION_MERGE_SORT_H
+#ifndef SOLUCION_VECTOR_H
+#define SOLUCION_VECTOR_H
 
 #include "../Solucion.h"
+#include <vector>
 
-class SolucionMergeSort : public Solucion {
+class SolucionVector : public Solucion {
   public:
+    std::vector<int> vector_;
 
 };
 

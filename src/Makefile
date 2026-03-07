@@ -1,6 +1,6 @@
 # Variables
 CC = g++
-CFLAGS = -Wall -std=c++11
+CFLAGS = -Wall -std=c++14
 OBJ_DIR = ImplementacionClases
 INC_DIR = Clases
 SRC_DIR = $(OBJ_DIR)
@@ -14,13 +14,10 @@ OBJ_FILES = $(OBJ_DIR)/Algoritmo.o \
 						$(OBJ_DIR)/Instancia.o \
 						$(OBJ_DIR)/LeerFichero.o \
 						$(OBJ_DIR)/Solucion.o \
-						$(OBJ_DIR)/VectorInstancia.o \
 						$(OBJ_DIR)/Algoritmos/AlgoritmoMergeSort.o \
 						$(OBJ_DIR)/Algoritmos/AlgoritmoQuickSort.o \
-						$(OBJ_DIR)/Instancias/InstanciaMergeSort.o \
-						$(OBJ_DIR)/Instancias/InstanciaQuickSort.o \
-						$(OBJ_DIR)/Soluciones/SolucionMergeSort.o \
-						$(OBJ_DIR)/Soluciones/SolucionQuickSort.o 
+						$(OBJ_DIR)/Instancias/InstanciaVector.o \
+						$(OBJ_DIR)/Soluciones/SolucionVector.o 
 
 # Regla por defecto
 all: $(EXEC)

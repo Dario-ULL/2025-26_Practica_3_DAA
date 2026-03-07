@@ -9,10 +9,12 @@
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
 
+#include "Algoritmo.h"
+
 #ifndef DIVIDE_Y_VENCERAS_H
 #define DIVIDE_Y_VENCERAS_H
 
-class DivideYVenceras {
+class DivideYVenceras : Algoritmo {
  public:
   DivideYVenceras() = default;
   ~DivideYVenceras() = default;

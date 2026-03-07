@@ -12,11 +12,21 @@
 #ifndef ALGORITMO_H
 #define ALGORITMO_H
 
+#include "Instancia.h"
+#include "Solucion.h"
+#include <string>
+
 class Algoritmo {
  public:
   Algoritmo() = default;
   ~Algoritmo() = default;
+
+  Algoritmo(Instancia instancia, std::string algoritmo);
+
  private:
+   Instancia instancia_;
+   Solucion solucion_;
+   std::string algoritmo_;
 };
 
 #endif
