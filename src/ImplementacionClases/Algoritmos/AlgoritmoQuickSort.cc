@@ -10,3 +10,24 @@
 */
 
 #include "../../Clases/Algoritmos/AlgoritmoQuickSort.h"
+
+
+bool 
+AlgoritmoQuickSort::esPequeño(){
+  
+}
+
+Solucion* 
+AlgoritmoQuickSort::resolverPequeño(Instancia* instancia){
+
+}
+
+std::vector<Instancia*> 
+AlgoritmoQuickSort::dividir(Instancia* instancia){
+
+}
+
+Solucion* 
+AlgoritmoQuickSort::combinarSolucion(std::vector<Solucion*> soluciones){
+  
+}

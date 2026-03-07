@@ -13,24 +13,22 @@
 #define INSTANCIA_VECTOR_H
 
 #include "../Instancia.h"
-#include <vector>
 
-class InstanciaVector : Instancia {
+class Instancia;
+
+class InstanciaVector : public Instancia {
  public:
-   InstanciaVector();
-   ~InstanciaVector() = default;
-   InstanciaVector(int size);
+	InstanciaVector();
+	InstanciaVector(int size);
+	InstanciaVector(std::vector<int>);
+	~InstanciaVector() = default;
 
-   void mostrarValores();
-
-   void setValue(int pos, int valor);
-
-   int getValue(int pos);
-   int getSize();
-
-private:
-   std::vector<int> vector_;
-
+	int getSize() const override;
+	int getValue(int pos) const override;
+	void setValue(int pos, int valor) override;
+	void mostrarValores() const override;
+ private:
+	std::vector<int> instaciaVector_;
 };
 
 #endif

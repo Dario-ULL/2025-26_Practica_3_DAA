@@ -9,32 +9,37 @@
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
 
-#include <iostream>
 #include "../../Clases/Instancias/InstanciaVector.h"
 
-InstanciaVector::InstanciaVector(){
-    vector_.resize(0);
+InstanciaVector::InstanciaVector() {
+  instaciaVector_.resize(0);
 }
 
-InstanciaVector::InstanciaVector(int size){
-    vector_.resize(size);
+InstanciaVector::InstanciaVector(int size) : instaciaVector_(size, 0) {}
+
+InstanciaVector::InstanciaVector(std::vector<int> vector) {
+  instaciaVector_ = vector;
 }
 
-void InstanciaVector::mostrarValores(){
-    for(int it = 0; it < getSize(); it++){
-        std::cout << "[" << vector_[it] << "] ";
-    }
-    std::cout << std::endl;
+int 
+InstanciaVector::getValue(int pos) const {
+  return instaciaVector_[pos];
 }
 
-void InstanciaVector::setValue(int pos, int valor){
-    vector_[pos] = valor;
+int 
+InstanciaVector::getSize() const {
+  return instaciaVector_.size();
 }
 
-int InstanciaVector::getValue(int pos){
-    return vector_[pos];
+void 
+InstanciaVector::setValue(int pos, int valor) {
+  instaciaVector_[pos] = valor;
 }
 
-int InstanciaVector::getSize(){
-    return vector_.size();
+void 
+InstanciaVector::mostrarValores() const {
+  for(int it = 0; it < getSize(); it++){
+    std::cout << "[" << instaciaVector_[it] << "] ";
+  }
+  std::cout << std::endl;
 }

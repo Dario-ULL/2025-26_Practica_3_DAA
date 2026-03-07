@@ -12,11 +12,19 @@
 #ifndef SOLUCION_H
 #define SOLUCION_H
 
+#include <iostream>
+#include <vector>
+#include <any>
+
 class Solucion {
  public:
   Solucion() = default;
   ~Solucion() = default;
- private:
+
+ protected:
+  virtual void setSolution(std::any solution) = 0;
+  virtual std::any getSolution() const = 0;
+  virtual void mostrarSolucion() const = 0;
 };
 
 #endif

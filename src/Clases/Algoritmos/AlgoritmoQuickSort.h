@@ -14,11 +14,19 @@
 
 #include "../DivideYVenceras.h"
 
-class QuickSort {
+class DivideYVenceras;
+class Solucion;
+class Instancia;
+
+class AlgoritmoQuickSort : public DivideYVenceras {
  public:
-  QuickSort() = default;
-  ~QuickSort() = default;
- private:
+  AlgoritmoQuickSort() = default;
+  ~AlgoritmoQuickSort() = default;
+
+  bool esPequeño() override;
+  Solucion* resolverPequeño(Instancia* instancia) override;
+  std::vector<Instancia*> dividir(Instancia* instancia) override;
+  Solucion* combinarSolucion(std::vector<Solucion*>) override;
 };
 
 #endif

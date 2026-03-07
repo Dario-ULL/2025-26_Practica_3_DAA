@@ -13,12 +13,20 @@
 #define SOLUCION_VECTOR_H
 
 #include "../Solucion.h"
-#include <vector>
+
+class Solucion;
 
 class SolucionVector : public Solucion {
-  public:
-    std::vector<int> vector_;
+ public:
+  SolucionVector();
+  SolucionVector(std::vector<int>);
+  ~SolucionVector() = default;
 
+  void setSolution(std::any solution) override;
+  std::any getSolution() const override;
+  void mostrarSolucion() const override;
+ private:
+  std::vector<int> solucionVector_;
 };
 
 #endif

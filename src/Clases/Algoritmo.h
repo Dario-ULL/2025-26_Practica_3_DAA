@@ -14,19 +14,20 @@
 
 #include "Instancia.h"
 #include "Solucion.h"
+#include "Soluciones/SolucionVector.h"
+#include "Instancias/InstanciaVector.h"
+
 #include <string>
+#include <any>
+#include <algorithm>
 
 class Algoritmo {
  public:
   Algoritmo() = default;
   ~Algoritmo() = default;
-
-  Algoritmo(Instancia instancia, std::string algoritmo);
-
- private:
-   Instancia instancia_;
-   Solucion solucion_;
-   std::string algoritmo_;
+  virtual Solucion* Resolver(Instancia*) = 0;
+ protected:
+  Solucion* solucion_;
 };
 
 #endif

@@ -9,16 +9,26 @@
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
 
-#include "Algoritmo.h"
-
 #ifndef DIVIDE_Y_VENCERAS_H
 #define DIVIDE_Y_VENCERAS_H
 
-class DivideYVenceras : Algoritmo {
+#include "Algoritmo.h"
+
+class Algoritmo;
+class Instancia;
+class Solucion;
+
+class DivideYVenceras : public Algoritmo {
  public:
   DivideYVenceras() = default;
   ~DivideYVenceras() = default;
- private:
+
+  Solucion* Resolver(Instancia*) override;
+ protected:
+  virtual bool esPequeño(Instancia*) = 0;
+  virtual Solucion* resolverPequeño(Instancia*) = 0;
+  virtual std::vector<Instancia*> dividir(Instancia*) = 0;
+  virtual Solucion* combinarSolucion(std::vector<Solucion*>) = 0;
 };
 
 #endif

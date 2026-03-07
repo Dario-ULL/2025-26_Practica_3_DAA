@@ -1,6 +1,6 @@
 # Variables
 CC = g++
-CFLAGS = -Wall -std=c++14
+CXXFLAGS = -Wall -std=c++17
 OBJ_DIR = ImplementacionClases
 INC_DIR = Clases
 SRC_DIR = $(OBJ_DIR)
@@ -11,9 +11,7 @@ EXEC = Ejecutable
 OBJ_FILES = $(OBJ_DIR)/Algoritmo.o \
 						$(OBJ_DIR)/DivideYVenceras.o \
 						$(OBJ_DIR)/EscribirFichero.o \
-						$(OBJ_DIR)/Instancia.o \
 						$(OBJ_DIR)/LeerFichero.o \
-						$(OBJ_DIR)/Solucion.o \
 						$(OBJ_DIR)/Algoritmos/AlgoritmoMergeSort.o \
 						$(OBJ_DIR)/Algoritmos/AlgoritmoQuickSort.o \
 						$(OBJ_DIR)/Instancias/InstanciaVector.o \

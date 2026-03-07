@@ -10,3 +10,17 @@
 */
 
 #include "../Clases/DivideYVenceras.h"
+
+Solucion* DivideYVenceras::Resolver(Instancia* instancia){
+  if (esPequeño(instancia)) {
+    return resolverPequeño(instancia);
+  } else {
+    std::vector<Instancia*> instanciaDividida = dividir(instancia);
+    std::vector<Solucion*> soluciones(instanciaDividida.size());
+    for (size_t it = 0; it < instanciaDividida.size(); it++) {
+      soluciones[it] = Resolver(instanciaDividida[it]);
+    }
+    solucion_ = combinarSolucion(soluciones);  
+    return solucion_;
+  }
+}

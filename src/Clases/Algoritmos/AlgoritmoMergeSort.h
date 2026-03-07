@@ -14,11 +14,24 @@
 
 #include "../DivideYVenceras.h"
 
-class MergeSort {
+class DivideYVenceras;
+class Solucion;
+class Instancia;
+class SolucionVector;
+class InstanciaVector;
+
+class AlgoritmoMergeSort : public DivideYVenceras {
  public:
-  MergeSort() = default;
-  ~MergeSort() = default;
+  AlgoritmoMergeSort() = default;
+  ~AlgoritmoMergeSort() = default;
+
+  bool esPequeño(Instancia*) override;
+  Solucion* resolverPequeño(Instancia*) override;
+  std::vector<Instancia*> dividir(Instancia*) override;
+  Solucion* combinarSolucion(std::vector<Solucion*>) override;
  private:
+
+
 };
 
 #endif

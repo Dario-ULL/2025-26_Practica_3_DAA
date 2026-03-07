@@ -12,12 +12,19 @@
 #ifndef INSTANCIA_H
 #define INSTANCIA_H
 
+#include <iostream>
+#include <vector>
+#include <any>
+
 class Instancia {
  public:
   Instancia() = default;
-  ~Instancia() = default;
- private:
+  virtual ~Instancia() = default;
   
+  virtual int getSize() const = 0;
+  virtual int getValue(int pos) const = 0;
+  virtual void setValue(int pos, int valor) = 0;
+  virtual void mostrarValores() const = 0;
 };
 
 #endif

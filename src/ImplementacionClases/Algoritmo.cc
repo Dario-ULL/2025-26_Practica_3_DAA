@@ -10,8 +10,3 @@
 */
 
 #include "../Clases/Algoritmo.h"
-
-Algoritmo::Algoritmo(Instancia instancia, std::string algoritmo){
-    instancia_ = instancia;
-    algoritmo_ = algoritmo;
-}
