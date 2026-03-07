@@ -9,21 +9,27 @@
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
 
-#ifndef ESCRIBIRFICHERO_H
-#define ESCRIBIRFICHERO_H
+#ifndef ESCRIBIR_H
+#define ESCRIBIR_H
 
 #include <string>
 #include <vector>
 #include <fstream>
 #include <iostream>
 
-class EscribirFichero {
- public:
-  EscribirFichero() = default;
-  ~EscribirFichero() = default;
+#include "Instancia.h"
+#include "Solucion.h"
+#include "Algoritmo.h"
 
-  void EscribirArchivo(const std::vector<int>& datos);
-  void EscribirArchivo(const std::string& nombreArchivo, const std::vector<int>& datos);
+class Instancia;
+class Solucion;
+
+class Escribir {
+ public:
+  Escribir() = default;
+  ~Escribir() = default;
+
+  void mostrarResultados(std::ostream&, Instancia*, Solucion*, Algoritmo*) const;
 };
 
 #endif

@@ -13,7 +13,7 @@
 
 bool 
 AlgoritmoMergeSort::esPequeño(Instancia* instancia){
-  if (instancia->getSize() <= 1) {
+  if (std::any_cast<int>(instancia->getSize()) <= 1) {
     return true;
   }
   return false;
@@ -22,8 +22,8 @@ AlgoritmoMergeSort::esPequeño(Instancia* instancia){
 Solucion* 
 AlgoritmoMergeSort::resolverPequeño(Instancia* instancia){
   std::vector<int> datos;
-  for(int i = 0; i < instancia->getSize(); ++i) {
-    datos.push_back(instancia->getValue(i));
+  for(size_t i = 0; i < std::any_cast<size_t>(instancia->getSize()); ++i) {
+    datos.push_back(std::any_cast<int>(instancia->getValue(i)));
   }
   Solucion* solucion = new SolucionVector(datos);
   return solucion;
@@ -31,14 +31,14 @@ AlgoritmoMergeSort::resolverPequeño(Instancia* instancia){
 
 std::vector<Instancia*> 
 AlgoritmoMergeSort::dividir(Instancia* instancia){
-  int mid = instancia->getSize() / 2;
+  int mid = std::any_cast<int>(instancia->getSize()) / 2;
   std::vector<Instancia*> subproblemas;
   Instancia* izquierda = new InstanciaVector(mid);
   for(int i = 0; i < mid; ++i) {
       izquierda->setValue(i, instancia->getValue(i));
   }
 
-  int tamDerecha = instancia->getSize() - mid;
+  int tamDerecha = std::any_cast<int>(instancia->getSize()) - mid;
   Instancia* derecha = new InstanciaVector(tamDerecha);
   for(int i = 0; i < tamDerecha; ++i) {
       derecha->setValue(i, instancia->getValue(mid + i));
@@ -49,6 +49,30 @@ AlgoritmoMergeSort::dividir(Instancia* instancia){
 }
 
 Solucion* 
-AlgoritmoMergeSort::combinarSolucion(std::vector<Solucion*>){
-  
+AlgoritmoMergeSort::combinarSolucion(std::vector<Solucion*> subSoluciones){
+  SolucionVector* solucionIzq = static_cast<SolucionVector*>(subSoluciones[0]);
+  SolucionVector* solucionDer = static_cast<SolucionVector*>(subSoluciones[1]);
+  std::vector<int> resultado;
+  int i = 0, j = 0;
+  while (i < solucionIzq->getSize() && j < solucionDer->getSize()) {
+    if (solucionIzq->getValue(i) <= solucionDer->getValue(j)) {
+      resultado.push_back(solucionIzq->getValue(i++));
+    } else {
+      resultado.push_back(solucionDer->getValue(j++));
+    }
+  }
+  while (i < solucionIzq->getSize()) {
+    resultado.push_back(solucionIzq->getValue(i++));
+  }
+  while (j < solucionDer->getSize()) {
+    resultado.push_back(solucionDer->getValue(j++));
+  }
+  SolucionVector* solucionFinal = new SolucionVector(resultado);
+  return solucionFinal;  
+}
+
+
+std::string
+AlgoritmoMergeSort::algoritmo() const {
+  return "Merge Sort";
 }

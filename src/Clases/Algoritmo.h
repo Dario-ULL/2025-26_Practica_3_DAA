@@ -26,6 +26,7 @@ class Algoritmo {
   Algoritmo() = default;
   ~Algoritmo() = default;
   virtual Solucion* Resolver(Instancia*) = 0;
+  virtual std::string algoritmo() const = 0;
  protected:
   Solucion* solucion_;
 };

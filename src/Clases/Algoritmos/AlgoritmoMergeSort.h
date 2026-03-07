@@ -29,9 +29,8 @@ class AlgoritmoMergeSort : public DivideYVenceras {
   Solucion* resolverPequeño(Instancia*) override;
   std::vector<Instancia*> dividir(Instancia*) override;
   Solucion* combinarSolucion(std::vector<Solucion*>) override;
- private:
 
-
+  std::string algoritmo() const;
 };
 
 #endif

@@ -19,6 +19,21 @@ SolucionVector::SolucionVector (std::vector<int> solution) {
   solucionVector_ = solution;
 }
 
+std::vector<int>
+SolucionVector::getVector() const {
+  return solucionVector_;
+}
+
+int 
+SolucionVector::getSize() const {
+  return solucionVector_.size();
+}
+
+int 
+SolucionVector::getValue(int pos) const {
+  return solucionVector_[pos];
+}
+
 void
 SolucionVector::setSolution(std::any solution) {
   try {
@@ -34,10 +49,9 @@ SolucionVector::getSolution() const {
 }
 
 void
-SolucionVector::mostrarSolucion() const {
-  std::cout << "La solucion es: ";
-  for (size_t it = 0; it < solucionVector_.size(); it++){
-    std::cout << solucionVector_[it] << " ";
+SolucionVector::mostrarSolucion(std::ostream& os) const {
+  for(size_t it = 0; it < solucionVector_.size(); it++){
+    os << "[" << solucionVector_[it] << "] ";
   }
-  std::cout << std::endl;
+  os << std::endl;
 }

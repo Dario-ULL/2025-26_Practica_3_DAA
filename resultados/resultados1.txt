@@ -1,0 +1,3 @@
+Instancia Inicial: [78] [19] [45] [51] [16] [80] [65] [86] [10] [43] 
+Resuelto con el algoritmo: Merge Sort
+Solucion: [10] [16] [19] [43] [45] [51] [65] [78] [80] [86] 

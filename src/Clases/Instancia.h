@@ -13,6 +13,7 @@
 #define INSTANCIA_H
 
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <any>
 
@@ -21,10 +22,10 @@ class Instancia {
   Instancia() = default;
   virtual ~Instancia() = default;
   
-  virtual int getSize() const = 0;
-  virtual int getValue(int pos) const = 0;
-  virtual void setValue(int pos, int valor) = 0;
-  virtual void mostrarValores() const = 0;
+  virtual std::any getSize() const = 0;
+  virtual std::any getValue(std::any) const = 0;
+  virtual void setValue(std::any, std::any) = 0;
+  virtual void mostrarValores(std::ostream&) const = 0;
 };
 
 #endif

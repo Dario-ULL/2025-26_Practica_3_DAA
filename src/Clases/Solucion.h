@@ -13,6 +13,7 @@
 #define SOLUCION_H
 
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <any>
 
@@ -20,11 +21,11 @@ class Solucion {
  public:
   Solucion() = default;
   ~Solucion() = default;
-
+  
+  virtual void mostrarSolucion(std::ostream&) const = 0;
  protected:
   virtual void setSolution(std::any solution) = 0;
   virtual std::any getSolution() const = 0;
-  virtual void mostrarSolucion() const = 0;
 };
 
 #endif

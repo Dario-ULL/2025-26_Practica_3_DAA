@@ -21,25 +21,46 @@ InstanciaVector::InstanciaVector(std::vector<int> vector) {
   instaciaVector_ = vector;
 }
 
-int 
-InstanciaVector::getValue(int pos) const {
-  return instaciaVector_[pos];
+std::any 
+InstanciaVector::getValue(std::any pos) const {
+  try {
+    int index = std::any_cast<int>(pos);
+    if (index >= 0 && index < instaciaVector_.size()) {
+      return instaciaVector_[index];
+    } else {
+      std::cerr << "Error: Índice fuera de rango." << std::endl;
+      return std::any();
+    }
+  } catch (const std::bad_any_cast& e) {
+    std::cerr << "Error al convertir la posición: " << e.what() << std::endl;
+    return std::any();
+  }
 }
 
-int 
+std::any 
 InstanciaVector::getSize() const {
   return instaciaVector_.size();
 }
 
 void 
-InstanciaVector::setValue(int pos, int valor) {
-  instaciaVector_[pos] = valor;
+InstanciaVector::setValue(std::any pos, std::any valor) {
+  try {
+    int index = std::any_cast<int>(pos);
+    int value = std::any_cast<int>(valor);
+    if (index >= 0 && index < instaciaVector_.size()) {
+      instaciaVector_[index] = value;
+    } else {
+      std::cerr << "Error: Índice fuera de rango." << std::endl;
+    }
+  } catch (const std::bad_any_cast& e) {
+    std::cerr << "Error al convertir el valor o la posición: " << e.what() << std::endl;
+  }
 }
 
 void 
-InstanciaVector::mostrarValores() const {
-  for(int it = 0; it < getSize(); it++){
-    std::cout << "[" << instaciaVector_[it] << "] ";
+InstanciaVector::mostrarValores(std::ostream& os) const {
+  for(int it = 0; it < instaciaVector_.size(); it++){
+    os << "[" << instaciaVector_[it] << "] ";
   }
-  std::cout << std::endl;
+  os << std::endl;
 }

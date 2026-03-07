@@ -23,9 +23,9 @@ class AlgoritmoQuickSort : public DivideYVenceras {
   AlgoritmoQuickSort() = default;
   ~AlgoritmoQuickSort() = default;
 
-  bool esPequeño() override;
-  Solucion* resolverPequeño(Instancia* instancia) override;
-  std::vector<Instancia*> dividir(Instancia* instancia) override;
+  bool esPequeño(Instancia*) override;
+  Solucion* resolverPequeño(Instancia*) override;
+  std::vector<Instancia*> dividir(Instancia*) override;
   Solucion* combinarSolucion(std::vector<Solucion*>) override;
 };
 

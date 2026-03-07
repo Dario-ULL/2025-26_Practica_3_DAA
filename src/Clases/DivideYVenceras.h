@@ -24,6 +24,7 @@ class DivideYVenceras : public Algoritmo {
   ~DivideYVenceras() = default;
 
   Solucion* Resolver(Instancia*) override;
+  virtual std::string algoritmo() const = 0;
  protected:
   virtual bool esPequeño(Instancia*) = 0;
   virtual Solucion* resolverPequeño(Instancia*) = 0;

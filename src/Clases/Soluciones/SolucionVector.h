@@ -22,9 +22,13 @@ class SolucionVector : public Solucion {
   SolucionVector(std::vector<int>);
   ~SolucionVector() = default;
 
+  std::vector<int> getVector() const;
+  int getSize() const;
+  int getValue(int) const;
+
   void setSolution(std::any solution) override;
   std::any getSolution() const override;
-  void mostrarSolucion() const override;
+  void mostrarSolucion(std::ostream&) const override;
  private:
   std::vector<int> solucionVector_;
 };

@@ -9,24 +9,13 @@
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
 
-#ifndef LEER_FICHERO_H
-#define LEER_FICHERO_H
+#include "../Clases/Escribir.h"
 
-#include <nlohmann/json.hpp>
-#include <fstream>
-
-#include "Instancia.h"
-#include "Instancias/InstanciaPlanificacion.h"
-
-class Instancia;
-class InstanciaPlanificacion;
-
-class LeerFichero {
- public:
-  LeerFichero() = default;
-  ~LeerFichero() = default;
-
-  Instancia* leerFichero(const std::string& nombreFichero);
-};
-
-#endif
+void 
+Escribir::mostrarResultados(std::ostream& os, Instancia* instancia, Solucion* solucion, Algoritmo* algoritmo) const {
+  os << "Instancia Inicial: ";
+  instancia->mostrarValores(os);
+  os << "Resuelto con el algoritmo: " << algoritmo->algoritmo() << std::endl;
+  os << "Solucion: ";
+  solucion->mostrarSolucion(os);
+}

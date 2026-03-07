@@ -23,10 +23,10 @@ class InstanciaVector : public Instancia {
 	InstanciaVector(std::vector<int>);
 	~InstanciaVector() = default;
 
-	int getSize() const override;
-	int getValue(int pos) const override;
-	void setValue(int pos, int valor) override;
-	void mostrarValores() const override;
+	std::any getSize() const override;
+	std::any getValue(std::any) const override;
+	void setValue(std::any, std::any) override;
+	void mostrarValores(std::ostream&) const override;
  private:
 	std::vector<int> instaciaVector_;
 };
