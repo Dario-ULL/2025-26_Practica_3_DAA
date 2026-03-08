@@ -17,6 +17,8 @@
 class DivideYVenceras;
 class Solucion;
 class Instancia;
+class SolucionVector;
+class InstanciaVector;
 
 class AlgoritmoQuickSort : public DivideYVenceras {
  public:

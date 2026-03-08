@@ -12,21 +12,26 @@
 #include "../../Clases/Instancias/InstanciaVector.h"
 
 InstanciaVector::InstanciaVector() {
-  instaciaVector_.resize(0);
+  instanciaVector_.resize(0);
 }
 
-InstanciaVector::InstanciaVector(int size) : instaciaVector_(size, 0) {}
+InstanciaVector::InstanciaVector(int size) : instanciaVector_(size, 0) {}
 
 InstanciaVector::InstanciaVector(std::vector<int> vector) {
-  instaciaVector_ = vector;
+  instanciaVector_ = vector;
+}
+
+std::vector<int> 
+InstanciaVector::getVector() const{
+  return instanciaVector_;
 }
 
 std::any 
 InstanciaVector::getValue(std::any pos) const {
   try {
     int index = std::any_cast<int>(pos);
-    if (index >= 0 && index < instaciaVector_.size()) {
-      return instaciaVector_[index];
+    if (index >= 0 && index < instanciaVector_.size()) {
+      return instanciaVector_[index];
     } else {
       std::cerr << "Error: Índice fuera de rango." << std::endl;
       return std::any();
@@ -37,9 +42,9 @@ InstanciaVector::getValue(std::any pos) const {
   }
 }
 
-std::any 
+int 
 InstanciaVector::getSize() const {
-  return instaciaVector_.size();
+  return instanciaVector_.size();
 }
 
 void 
@@ -47,8 +52,8 @@ InstanciaVector::setValue(std::any pos, std::any valor) {
   try {
     int index = std::any_cast<int>(pos);
     int value = std::any_cast<int>(valor);
-    if (index >= 0 && index < instaciaVector_.size()) {
-      instaciaVector_[index] = value;
+    if (index >= 0 && index < instanciaVector_.size()) {
+      instanciaVector_[index] = value;
     } else {
       std::cerr << "Error: Índice fuera de rango." << std::endl;
     }
@@ -57,10 +62,15 @@ InstanciaVector::setValue(std::any pos, std::any valor) {
   }
 }
 
+void
+InstanciaVector::pushValue(std::any valor){
+  instanciaVector_.push_back(std::any_cast<int>(valor));
+}
+
 void 
 InstanciaVector::mostrarValores(std::ostream& os) const {
-  for(int it = 0; it < instaciaVector_.size(); it++){
-    os << "[" << instaciaVector_[it] << "] ";
+  for(int it = 0; it < instanciaVector_.size(); it++){
+    os << "[" << instanciaVector_[it] << "] ";
   }
   os << std::endl;
 }

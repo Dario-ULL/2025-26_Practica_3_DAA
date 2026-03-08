@@ -39,23 +39,33 @@ Instancia* generadorVectorEnteros (){
 }
 
 int main(int argc, char* argv[]) {
+  std::cout << "Hola mundo" << std::endl;
   srand(time(NULL));
   size_t numero_instancias = 5;
   std::vector<Instancia*> vector_instancias(numero_instancias);
   for (size_t it = 0; it < numero_instancias ; it++){
     vector_instancias[it] = generadorVectorEnteros();
   }
-  
+    std::cout << "1" << std::endl;
   Algoritmo* algoritmo;
   Solucion* solucion;
+    std::cout << "4" << std::endl;
   algoritmo = new AlgoritmoMergeSort();
   solucion = new SolucionVector();
+    std::cout << "5" << std::endl;
   solucion = algoritmo->Resolver(vector_instancias[0]);
+    std::cout << "7" << std::endl;
   Escribir escritor;
+    std::cout << "6" << std::endl;
   std::string nombreArchivo = "../resultados/resultados1.txt";
   std::ofstream archivo(nombreArchivo);
+    std::cout << "2" << std::endl;
   escritor.mostrarResultados(archivo, vector_instancias[0], solucion, algoritmo);
+    std::cout << "3" << std::endl;
   archivo.close();
+    std::cout << "4" << std::endl;
   escritor.mostrarResultados(std::cout, vector_instancias[0], solucion, algoritmo);
+
+    std::cout << "Adios mundo" << std::endl;
   return 0;
 }

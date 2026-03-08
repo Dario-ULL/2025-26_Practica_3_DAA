@@ -10,11 +10,10 @@
 */
 
 #include "../../Clases/Algoritmos/AlgoritmoQuickSort.h"
-/*
 
 bool 
 AlgoritmoQuickSort::esPequeño(Instancia* instancia){
-  if (instancia->getSize() <= 1) {
+  if (instancia->getSize() <= 2) {
     return true;
   }
   return false;
@@ -22,45 +21,52 @@ AlgoritmoQuickSort::esPequeño(Instancia* instancia){
 
 Solucion* 
 AlgoritmoQuickSort::resolverPequeño(Instancia* instancia){
-  std::vector<int> datos;
-  for(int i = 0; i < instancia->getSize(); ++i) {
-    datos.push_back(instancia->getValue(i));
+  int temp = std::any_cast<int>(instancia->getValue(0));
+  int temp2 = std::any_cast<int>(instancia->getValue(1));
+  if( temp > temp2){
+    instancia->setValue(0, temp2);
+    instancia->setValue(1, temp);
   }
-  Solucion* solucion = new SolucionVector(datos);
+  Solucion* solucion = new SolucionVector(instancia->getVector());
   return solucion;
 }
 
 std::vector<Instancia*> 
 AlgoritmoQuickSort::dividir(Instancia* instancia){
-  int pivote = instancia->getSize() / 2;
-  auto valor_pivote = instancia[pivote];
-  std::vector<Instancia*> subproblemas;
-  Instancia* izquierda = new InstanciaVector();
-  for(int it = 0; it < instancia->getSize(); it++) {
-    //if(instancia[it] < valor_pivote)
+  InstanciaVector* subinstanciaIzq = new InstanciaVector();
+  InstanciaVector* subinstanciaDer = new InstanciaVector();
+  int pivote_pos = instancia->getSize() / 2;
+  int pivote = instancia->getVector()[pivote_pos];
+
+  for(int it = 0; it < instancia->getSize(); it++){
+    int valor = instancia->getVector()[it];
+    if (valor <= pivote)
+      subinstanciaIzq->pushValue(valor);
+    else
+      subinstanciaDer->pushValue(valor);
   }
+
+  std::vector<Instancia*> subproblemas;
+  subproblemas.push_back(subinstanciaIzq);
+  subproblemas.push_back(subinstanciaDer);
+  return subproblemas;
 }
 
 Solucion* 
 AlgoritmoQuickSort::combinarSolucion(std::vector<Solucion*> subSoluciones){
+
   SolucionVector* solucionIzq = static_cast<SolucionVector*>(subSoluciones[0]);
   SolucionVector* solucionDer = static_cast<SolucionVector*>(subSoluciones[1]);
   std::vector<int> resultado;
-  int i = 0, j = 0;
-  while (i < solucionIzq->getSize() && j < solucionDer->getSize()) {
-    if (solucionIzq->getValue(i) <= solucionDer->getValue(j)) {
-      resultado.push_back(solucionIzq->getValue(i++));
-    } else {
-      resultado.push_back(solucionDer->getValue(j++));
-    }
+  int size_izq =  solucionIzq->getSize();
+
+  for(int it = 0; it < size_izq; it++){
+    resultado.push_back(solucionIzq->getVector()[it]);
   }
-  while (i < solucionIzq->getSize()) {
-    resultado.push_back(solucionIzq->getValue(i++));
+  for(int it = 0; it < solucionDer->getSize(); it++){
+    resultado.push_back(solucionIzq->getVector()[it]);
   }
-  while (j < solucionDer->getSize()) {
-    resultado.push_back(solucionDer->getValue(j++));
-  }
+  
   SolucionVector* solucionFinal = new SolucionVector(resultado);
   return solucionFinal;  
 }
-*/

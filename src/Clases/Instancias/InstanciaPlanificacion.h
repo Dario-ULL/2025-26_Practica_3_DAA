@@ -25,7 +25,7 @@ class InstanciaPlanificacion : public Instancia {
   InstanciaPlanificacion(int horizonte);
   ~InstanciaPlanificacion() = default;
 
-  std::any getSize() const override;
+  int getSize() const override;
   std::any getValue(std::any) const override;
   void setValue(std::any, std::any) override; 
   void mostrarValores(std::ostream&) const override;
