@@ -24,9 +24,6 @@ class Instancia {
   virtual ~Instancia() = default;
   
   virtual std::any getSize() const = 0;
-  virtual std::any getValue(std::any) const = 0;
-  virtual void setValue(std::any, std::any) = 0;
-  virtual void pushValue(std::any) = 0;
   virtual void mostrarValores(std::ostream&) const = 0;
 };
 

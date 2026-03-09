@@ -15,7 +15,7 @@ SolucionPlanificacion::SolucionPlanificacion() : numEmpleados_(0), horizonte_(0)
   matrizAsignacion_.clear();
 }
 
-SolucionPlanificacion::SolucionPlanificacion(int numEmpleados, int horizonte) : numEmpleados_(numEmpleados), horizonte_(horizonte), calidad_(0.0) {
+SolucionPlanificacion::SolucionPlanificacion(int numEmpleados, int horizonte, int turnos) : numEmpleados_(numEmpleados), horizonte_(horizonte), numTurnos_(turnos), calidad_(0.0) {
   matrizAsignacion_.resize(numEmpleados, std::vector<int>(horizonte, -1));
 }
 
@@ -43,11 +43,6 @@ SolucionPlanificacion::getTurnoAsignado(int empIdx, int dia) const {
 void
 SolucionPlanificacion::setCalidad(double calidad) {
   calidad_ = calidad;
-}
-
-double
-SolucionPlanificacion::getCalidad() const {
-  return calidad_;
 }
 
 int
@@ -79,12 +74,20 @@ SolucionPlanificacion::setSolution(std::any solution) {
 void
 SolucionPlanificacion::mostrarSolucion(std::ostream& os) const {
   os << "Matriz de Asignación (Empleados x Días):\n";
+  os << std::setw(15) << " ";
+  for (int dia = 0; dia < horizonte_; ++dia) {
+    os << "D" << dia << std::setw(3)  << " ";
+  }
+  os << "\n";
   for (size_t empIdx = 0; empIdx < matrizAsignacion_.size(); empIdx++) {
-    os << "Empleado " << empIdx << ": ";
+    os << "Empleado " << std::left << std::setw(2) << empIdx << ": ";
     for (size_t dia = 0; dia < matrizAsignacion_[empIdx].size(); dia++) {
-      os << "[" << matrizAsignacion_[empIdx][dia] << "] ";
+      int turno = matrizAsignacion_[empIdx][dia];
+      os << "[" << std::right << std::setw(2) << turno << "] ";
     }
     os << "\n";
   }
-  os << "Calidad de la Solución: " << calidad_ << "\n";
+  os << "--------------------------------------------------\n";
+  double calidadReal = (horizonte_ * numTurnos_) * 100;
+  os << "Calidad de la Solución: " << calidad_ - calidadReal << "\n";
 }

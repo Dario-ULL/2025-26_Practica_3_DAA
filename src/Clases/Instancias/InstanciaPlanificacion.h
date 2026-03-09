@@ -29,13 +29,9 @@ class InstanciaPlanificacion : public Instancia {
 
   // Métodos obligatorios de la interfaz Instancia (Patrón Template)
   std::any getSize() const override; 
-  std::any getValue(std::any) const override;
-  void setValue(std::any, std::any);
-  void pushValue(std::any) override;
   void mostrarValores(std::ostream&) const override;
 
   // Configuración (Usada por LeerFichero JSON)
-  void setHorizonte(int);
   void añadirEmpleado(const std::string&, int);
   void añadirTurno(const std::string&);
   void setSatisfaccion(int, int, int, int);

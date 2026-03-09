@@ -30,11 +30,11 @@ AlgoritmoQuickSort::resolverPequeño(Instancia* instancia) {
     Solucion* solucion = new SolucionVector(instanciaVector->getVector());
     return solucion;
   }
-  int temp = std::any_cast<int>(instancia->getValue(0));
-  int temp2 = std::any_cast<int>(instancia->getValue(1));
+  int temp = instanciaVector->getValue(0);
+  int temp2 = instanciaVector->getValue(1);
   if( temp > temp2){
-    instancia->setValue(0, temp2);
-    instancia->setValue(1, temp);
+    instanciaVector->setValue(0, temp2);
+    instanciaVector->setValue(1, temp);
   }
   Solucion* solucion = new SolucionVector(instanciaVector->getVector());
   return solucion;

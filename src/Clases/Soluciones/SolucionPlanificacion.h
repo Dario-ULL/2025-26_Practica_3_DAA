@@ -17,13 +17,12 @@
 class SolucionPlanificacion : public Solucion {
  public:
   SolucionPlanificacion();
-  SolucionPlanificacion(int, int);
+  SolucionPlanificacion(int, int, int);
   ~SolucionPlanificacion() = default;
 
   void asignarTurno(int, int, int);
   int getTurnoAsignado(int, int) const;
   void setCalidad(double);
-  double getCalidad() const;
   int getHorizonte() const;
   int getNumEmpleados() const;
 
@@ -34,6 +33,7 @@ class SolucionPlanificacion : public Solucion {
   std::vector<std::vector<int>> matrizAsignacion_;
   int numEmpleados_;
   int horizonte_;
+  int numTurnos_;
   double calidad_;
 };
 

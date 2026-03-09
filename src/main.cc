@@ -30,7 +30,7 @@
 
 Instancia* generadorVectorEnteros (){
   int vector_size = (rand() % 15) + 5; 
-  Instancia* instancia = new InstanciaVector(vector_size);
+  InstanciaVector* instancia = new InstanciaVector(vector_size);
   for(int it = 0; it < vector_size; it++){
     instancia->setValue(it, rand() % 100); 
   }
@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
   std::string nombreArchivo = "../resultados/resultados1.txt";
   std::ofstream archivo(nombreArchivo);
 
-  /*
+  
   solucion = new SolucionVector();
   // EJEMPLO DE USO CON MERGE SORT
   algoritmo = new AlgoritmoMergeSort();
@@ -63,20 +63,17 @@ int main(int argc, char* argv[]) {
   solucion = algoritmo->Resolver(vector_instancias[1]);
   escritor.mostrarResultados(archivo, vector_instancias[1], solucion, algoritmo);
   escritor.mostrarResultados(std::cout, vector_instancias[1], solucion, algoritmo);  
-  */
+  
 
   solucion = new SolucionPlanificacion();
   //EJEMPLO DE USO ALGORITMO PLANIFICACION
-  std::string json = "../json/instance_horizon7_employees5_shifts3_000.json";
+  std::string json = "../json/instance_horizon7_employees10_shifts6_000.json";
   LeerFichero lector;
   InstanciaPlanificacion* instanciaOriginal = lector.leerFichero(json);
-  std::cout << "archivo leido" << std::endl;
   algoritmo = new AlgoritmoPlanificacion(instanciaOriginal);
   solucion = algoritmo->Resolver(instanciaOriginal);
   escritor.mostrarResultados(archivo, vector_instancias[0], solucion, algoritmo);
   escritor.mostrarResultados(std::cout, vector_instancias[0], solucion, algoritmo);   
-
   archivo.close();
-
   return 0;
 }

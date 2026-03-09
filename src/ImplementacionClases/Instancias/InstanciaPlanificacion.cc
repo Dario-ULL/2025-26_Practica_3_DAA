@@ -20,22 +20,6 @@ InstanciaPlanificacion::getSize() const {
   return horizonte_;
 }
 
-std::any
-InstanciaPlanificacion::getValue(std::any key) const {
-  // No se implementa en esta clase, ya que se accede a través de métodos específicos
-  return {};
-}
-
-void
-InstanciaPlanificacion::setValue(std::any key, std::any value) {
-  // No se implementa en esta clase, ya que se modifica a través de métodos específicos
-}
-
-void 
-InstanciaPlanificacion::pushValue(std::any value) {
-  // No se implementa en esta clase, ya que no se representa como un vector simple
-}
-
 void
 InstanciaPlanificacion::mostrarValores(std::ostream& os) const {
   os << "Planning Horizon: " << horizonte_ << " days\n";
@@ -50,15 +34,8 @@ InstanciaPlanificacion::mostrarValores(std::ostream& os) const {
 }
 
 void
-InstanciaPlanificacion::setHorizonte(int dias) {
-  horizonte_ = dias;
-  requerimientos_.resize(dias);
-}
-
-void
 InstanciaPlanificacion::añadirEmpleado(const std::string& nombre, int diasDescanso) {
   empleados_.push_back({nombre, diasDescanso});
-  // Ajustar matriz A[e][d][t]
   satisfaccion_.resize(empleados_.size());
   for (auto& matrizDia : satisfaccion_) {
     matrizDia.resize(horizonte_);
@@ -96,7 +73,6 @@ InstanciaPlanificacion::setMinEmpleados(int dia, int turnoIdx, int valor) {
     requerimientos_[dia][turnoIdx] = valor;
   }
 }
-
 
 std::vector<int> 
 InstanciaPlanificacion::getEmpleadosOrdenadosPorSatisfaccion(int dia, int turnoIdx) const {

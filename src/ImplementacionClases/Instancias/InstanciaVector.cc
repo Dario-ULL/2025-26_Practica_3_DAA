@@ -26,19 +26,18 @@ InstanciaVector::getVector() const{
   return instanciaVector_;
 }
 
-std::any 
-InstanciaVector::getValue(std::any pos) const {
+int
+InstanciaVector::getValue(int pos) const {
   try {
-    size_t index = std::any_cast<int>(pos);
-    if (index >= 0 && index < instanciaVector_.size()) {
-      return instanciaVector_[index];
+    if (pos >= 0 && pos < instanciaVector_.size()) {
+      return instanciaVector_[pos];
     } else {
       std::cerr << "Error: Índice fuera de rango." << std::endl;
-      return std::any();
+      return -1;
     }
   } catch (const std::bad_any_cast& e) {
     std::cerr << "Error al convertir la posición: " << e.what() << std::endl;
-    return std::any();
+    return -1;
   }
 }
 
@@ -48,12 +47,10 @@ InstanciaVector::getSize() const {
 }
 
 void 
-InstanciaVector::setValue(std::any pos, std::any valor) {
+InstanciaVector::setValue(int pos, int valor) {
   try {
-    size_t index = std::any_cast<int>(pos);
-    int value = std::any_cast<int>(valor);
-    if (index >= 0 && index < instanciaVector_.size()) {
-      instanciaVector_[index] = value;
+    if (pos >= 0 && pos < instanciaVector_.size()) {
+      instanciaVector_[pos] = valor;
     } else {
       std::cerr << "Error: Índice fuera de rango." << std::endl;
     }
@@ -63,8 +60,8 @@ InstanciaVector::setValue(std::any pos, std::any valor) {
 }
 
 void
-InstanciaVector::pushValue(std::any valor){
-  instanciaVector_.push_back(std::any_cast<int>(valor));
+InstanciaVector::pushValue(int valor){
+  instanciaVector_.push_back(valor);
 }
 
 void 

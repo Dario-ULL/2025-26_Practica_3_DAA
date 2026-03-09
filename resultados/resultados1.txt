@@ -1,9 +1,22 @@
-Instancia Inicial: [69] [96] [52] [39] [8] [53] [4] [98] [52] 
+Instancia Inicial: [79] [31] [47] [84] [67] [89] [41] [3] [94] [99] [37] [91] [42] [38] [11] [57] 
+Resuelto con el algoritmo: Merge Sort
+Solucion: [3] [11] [31] [37] [38] [41] [42] [47] [57] [67] [79] [84] [89] [91] [94] [99] 
+Instancia Inicial: [0] [35] [43] [27] [69] [94] [66] [34] 
+Resuelto con el algoritmo: Quick Sort
+Solucion: [0] [27] [34] [35] [43] [66] [69] [94] 
+Instancia Inicial: [79] [31] [47] [84] [67] [89] [41] [3] [94] [99] [37] [91] [42] [38] [11] [57] 
 Resuelto con el algoritmo: Algoritmo de Planificacion
 Solucion: Matriz de Asignación (Empleados x Días):
-Empleado 0: [0] [0] [0] [0] [0] [0] [2] 
-Empleado 1: [-1] [-1] [1] [1] [1] [1] [1] 
-Empleado 2: [-1] [2] [2] [2] [2] [2] [-1] 
-Empleado 3: [1] [1] [-1] [-1] [-1] [-1] [0] 
-Empleado 4: [2] [-1] [-1] [-1] [-1] [-1] [-1] 
-Calidad de la Solución: 2194
+               D0   D1   D2   D3   D4   D5   D6   
+Empleado 0 : [-1] [ 0] [ 0] [-1] [ 1] [ 3] [-1] 
+Empleado 1 : [ 0] [ 3] [ 2] [ 0] [ 3] [ 4] [-1] 
+Empleado 2 : [ 4] [-1] [ 3] [ 1] [ 0] [-1] [ 4] 
+Empleado 3 : [ 2] [ 5] [ 4] [-1] [-1] [ 0] [ 3] 
+Empleado 4 : [ 5] [-1] [ 1] [ 4] [ 5] [ 1] [-1] 
+Empleado 5 : [-1] [-1] [-1] [-1] [ 2] [ 5] [ 1] 
+Empleado 6 : [ 3] [ 2] [ 5] [ 3] [-1] [-1] [ 2] 
+Empleado 7 : [-1] [ 1] [-1] [ 5] [-1] [ 2] [-1] 
+Empleado 8 : [ 1] [-1] [-1] [ 2] [ 4] [-1] [ 5] 
+Empleado 9 : [-1] [ 4] [-1] [-1] [-1] [-1] [ 0] 
+--------------------------------------------------
+Calidad de la Solución: 354
