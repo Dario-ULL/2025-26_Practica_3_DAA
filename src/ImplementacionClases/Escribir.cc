@@ -13,9 +13,9 @@
 
 void 
 Escribir::mostrarResultados(std::ostream& os, Instancia* instancia, Solucion* solucion, Algoritmo* algoritmo) const {
+  os << "Resuelto con el algoritmo: " << algoritmo->algoritmo() << std::endl;
   os << "Instancia Inicial: ";
   instancia->mostrarValores(os);
-  os << "Resuelto con el algoritmo: " << algoritmo->algoritmo() << std::endl;
   os << "Solucion: ";
   solucion->mostrarSolucion(os);
 }
