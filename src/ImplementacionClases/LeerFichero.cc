@@ -13,37 +13,45 @@
 
 Instancia* 
 LeerFichero::leerFichero(const std::string& nombreFichero) {
-  std::ifstream file(nombreFichero);
-  nlohmann::json j;
-  file >> j;
+std::ifstream file(nombreFichero);
+	nlohmann::json j;
+	file >> j;
 
-  // 1. Crear la instancia con el horizonte temporal
-  int horizonte = j["planningHorizon"];
-  auto* instancia = new InstanciaPlanificacion(horizonte);
+	// 1. Obtener el horizonte temporal (planningHorizon)
+	int horizonte = j["planningHorizon"];
+	InstanciaPlanificacion* instancia = new InstanciaPlanificacion(horizonte);
 
-  // 2. Leer Empleados
-  for (auto& item : j["employees"]) {
-      instancia->añadirEmpleado(item["name"], item["freeDays"]);
-  }
+	// 2. Cargar los Turnos (shifts)
+	for (const auto& turno : j["shifts"]) {
+			instancia->añadirTurno(turno.get<std::string>());
+	}
 
-  // 3. Leer Matriz de Satisfacción
-  for (auto& item : j["satisfaction"]) {
-      instancia->setSatisfaccion(
-          item["employee"], 
-          item["day"], 
-          item["shift"], 
-          item["value"]
-      );
-  }
+	// 3. Cargar los Empleados (employees)
+	// Incluye el nombre y los días de descanso (C[e])
+	for (const auto& emp : j["employees"]) {
+		instancia->añadirEmpleado(emp["name"], emp["freeDays"]);
+	}
 
-  // 4. Leer Requerimientos de Turnos
-  for (auto& item : j["requiredEmployees"]) {
-      instancia->setMinEmpleados(
-          item["day"], 
-          item["shift"], 
-          item["value"]
-      );
-  }
+	// 4. Cargar la Matriz de Satisfacción (satisfaction)
+	// Representa los valores A[e][d][t]
+	for (const auto& item : j["satisfaction"]) {
+		instancia->setSatisfaccion(
+			item["employee"], 
+			item["day"], 
+			item["shift"], 
+			item["value"]
+		);
+	}
 
-  return instancia;
+	// 5. Cargar los Requerimientos (requiredEmployees)
+	// Representa los valores B[d][t]
+	for (const auto& req : j["requiredEmployees"]) {
+		instancia->setMinEmpleados(
+			req["day"], 
+			req["shift"], 
+			req["value"]
+		);
+	}
+
+	return instancia;
 }

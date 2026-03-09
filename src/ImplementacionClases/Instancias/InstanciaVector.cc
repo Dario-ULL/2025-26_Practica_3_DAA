@@ -29,7 +29,7 @@ InstanciaVector::getVector() const{
 std::any 
 InstanciaVector::getValue(std::any pos) const {
   try {
-    int index = std::any_cast<int>(pos);
+    size_t index = std::any_cast<int>(pos);
     if (index >= 0 && index < instanciaVector_.size()) {
       return instanciaVector_[index];
     } else {
@@ -42,7 +42,7 @@ InstanciaVector::getValue(std::any pos) const {
   }
 }
 
-int 
+std::any 
 InstanciaVector::getSize() const {
   return instanciaVector_.size();
 }
@@ -50,7 +50,7 @@ InstanciaVector::getSize() const {
 void 
 InstanciaVector::setValue(std::any pos, std::any valor) {
   try {
-    int index = std::any_cast<int>(pos);
+    size_t index = std::any_cast<int>(pos);
     int value = std::any_cast<int>(valor);
     if (index >= 0 && index < instanciaVector_.size()) {
       instanciaVector_[index] = value;
@@ -69,7 +69,7 @@ InstanciaVector::pushValue(std::any valor){
 
 void 
 InstanciaVector::mostrarValores(std::ostream& os) const {
-  for(int it = 0; it < instanciaVector_.size(); it++){
+  for(size_t it = 0; it < instanciaVector_.size(); it++){
     os << "[" << instanciaVector_[it] << "] ";
   }
   os << std::endl;

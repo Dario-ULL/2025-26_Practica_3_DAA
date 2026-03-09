@@ -17,7 +17,8 @@ OBJ_FILES = $(OBJ_DIR)/Algoritmo.o \
             $(OBJ_DIR)/Algoritmos/AlgoritmoQuickSort.o \
             $(OBJ_DIR)/Instancias/InstanciaVector.o \
             $(OBJ_DIR)/Instancias/InstanciaPlanificacion.o \
-            $(OBJ_DIR)/Soluciones/SolucionVector.o 
+            $(OBJ_DIR)/Soluciones/SolucionVector.o \
+            $(OBJ_DIR)/Soluciones/SolucionPlanificacion.o
 
 # Regla por defecto
 all: $(EXEC)

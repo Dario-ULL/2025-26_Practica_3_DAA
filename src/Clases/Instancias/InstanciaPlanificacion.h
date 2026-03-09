@@ -14,42 +14,46 @@
 
 #include "../Instancia.h"
 
+class Instancia;
+
 struct Empleado {
   std::string nombre;
-  int diasDescanso;
+  int diasDescanso; // Dato C[e]
 };
 
 class InstanciaPlanificacion : public Instancia {
  public:
-  InstanciaPlanificacion() = default;
+  InstanciaPlanificacion() : horizonte_(0) {}
   InstanciaPlanificacion(int horizonte);
-  ~InstanciaPlanificacion() = default;
+  virtual ~InstanciaPlanificacion() = default;
 
-  int getSize() const override;
-  std::any getValue(std::any) const override;
-  void setValue(std::any, std::any) override; 
-  void mostrarValores(std::ostream&) const override;
+  // Métodos obligatorios de la interfaz Instancia (Patrón Template)
+  std::any getSize() const override; 
+  std::any getValue(std::any key) const override;
+  void setValue(std::any key, std::any value);
+  void pushValue(std::any value) override;
+  void mostrarValores(std::ostream& os) const override;
 
-  
+  // Configuración (Usada por LeerFichero JSON)
   void setHorizonte(int dias);
   void añadirEmpleado(const std::string& nombre, int diasDescanso);
   void añadirTurno(const std::string& idTurno);
   void setSatisfaccion(int empIdx, int dia, int turnoIdx, int valor);
   void setMinEmpleados(int dia, int turnoIdx, int valor);
 
-  // Consultas (usadas por el Algoritmo)
+  // Consultas para el Algoritmo (Datos A, B, C)
   int getSatisfaccion(int empIdx, int dia, int turnoIdx) const;
   int getMinEmpleados(int dia, int turnoIdx) const;
-  int getDiasDescansoEmpleado(int empIdx) const;
+  int getDiasDescansoRequeridos(int empIdx) const;
   int getNumEmpleados() const;
   int getNumTurnos() const;
 
  private:
-  int horizonte_;
-  std::vector<Empleado> empleados_;
-  std::vector<std::string> turnos_;
-  std::vector<std::vector<std::vector<int>>> satisfaccion_;
-  std::vector<std::vector<int>> requerimientos_;
+  int horizonte_; // D (Días)
+  std::vector<Empleado> empleados_; // E (Empleados)
+  std::vector<std::string> turnos_;    // T (Turnos)
+  std::vector<std::vector<std::vector<int>>> satisfaccion_; // A[e][d][t]
+  std::vector<std::vector<int>> requerimientos_;   // B[d][t]
 };
 
 #endif

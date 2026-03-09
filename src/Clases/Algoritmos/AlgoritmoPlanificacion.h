@@ -9,28 +9,28 @@
  *          utilizando los principios SOLID, el patron de estrategia y el patron Template.
 */
 
-#ifndef ALGORITMO_QUICKSORT_H
-#define ALGORITMO_QUICKSORT_H
+#ifndef ALGORITMO_PLANIFICACION_H
+#define ALGORITMO_PLANIFICACION_H
 
 #include "../DivideYVenceras.h"
 
 class DivideYVenceras;
 class Solucion;
 class Instancia;
-class SolucionVector;
-class InstanciaVector;
+class SolucionPlanificacion;
+class InstanciaPlanificacion;
 
-class AlgoritmoQuickSort : public DivideYVenceras {
+class AlgoritmoPlanificacion : public DivideYVenceras {
  public:
-  AlgoritmoQuickSort() = default;
-  ~AlgoritmoQuickSort() = default;
+  AlgoritmoPlanificacion() = default;
+  ~AlgoritmoPlanificacion() = default;
 
   bool esPequeño(Instancia*) override;
   Solucion* resolverPequeño(Instancia*) override;
   std::vector<Instancia*> dividir(Instancia*) override;
   Solucion* combinarSolucion(std::vector<Solucion*>) override;
 
-  std::string algoritmo() const;
+  std::string algoritmo() const override;
 };
 
 #endif

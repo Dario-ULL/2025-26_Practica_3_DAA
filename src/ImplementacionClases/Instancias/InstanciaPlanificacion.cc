@@ -12,13 +12,12 @@
 #include "../../Clases/Instancias/InstanciaPlanificacion.h"
 
 InstanciaPlanificacion::InstanciaPlanificacion(int horizonte) : horizonte_(horizonte) {
-  satisfaccion_.resize(0); 
-  requerimientos_.resize(horizonte);
+  requerimientos_.assign(horizonte, std::vector<int>());
 }
 
 std::any 
 InstanciaPlanificacion::getSize() const {
-  return std::make_tuple(horizonte_, empleados_.size(), turnos_.size());
+  return horizonte_;
 }
 
 std::any
@@ -30,6 +29,11 @@ InstanciaPlanificacion::getValue(std::any key) const {
 void
 InstanciaPlanificacion::setValue(std::any key, std::any value) {
   // No se implementa en esta clase, ya que se modifica a través de métodos específicos
+}
+
+void 
+InstanciaPlanificacion::pushValue(std::any value) {
+  // No se implementa en esta clase, ya que no se representa como un vector simple
 }
 
 void
@@ -54,11 +58,12 @@ InstanciaPlanificacion::setHorizonte(int dias) {
 void
 InstanciaPlanificacion::añadirEmpleado(const std::string& nombre, int diasDescanso) {
   empleados_.push_back({nombre, diasDescanso});
+  // Ajustar matriz A[e][d][t]
   satisfaccion_.resize(empleados_.size());
-  for (auto& diaVec : satisfaccion_) {
-    diaVec.resize(horizonte_);
-    for (auto& turnoVec : diaVec) {
-      turnoVec.resize(turnos_.size(), 0);
+  for (auto& matrizDia : satisfaccion_) {
+    matrizDia.resize(horizonte_);
+    for (auto& vectorTurno : matrizDia) {
+      vectorTurno.resize(turnos_.size(), 0);
     }
   }
 }
@@ -66,31 +71,37 @@ InstanciaPlanificacion::añadirEmpleado(const std::string& nombre, int diasDesca
 void
 InstanciaPlanificacion::añadirTurno(const std::string& idTurno) {
   turnos_.push_back(idTurno);
-  for (auto& dia : satisfaccion_) {
-    for (auto& turno : dia) {
-      turno.resize(turnos_.size(), 0);
+  for (auto& matrizDia : satisfaccion_) {
+    for (auto& vectorTurno : matrizDia) {
+      vectorTurno.resize(turnos_.size(), 0);
     }
   }
 }
 
-void
+void 
 InstanciaPlanificacion::setSatisfaccion(int empIdx, int dia, int turnoIdx, int valor) {
-  if (empIdx < satisfaccion_.size() && dia < horizonte_ && turnoIdx < turnos_.size()) {
+  if (empIdx >= 0 && static_cast<size_t>(empIdx) < satisfaccion_.size() && 
+    dia >= 0 && dia < horizonte_ && 
+    turnoIdx >= 0 && static_cast<size_t>(turnoIdx) < turnos_.size()) {
     satisfaccion_[empIdx][dia][turnoIdx] = valor;
   }
 }
 
 void  
 InstanciaPlanificacion::setMinEmpleados(int dia, int turnoIdx, int valor) {
-  if (dia < horizonte_ && turnoIdx < turnos_.size()) {
-    requerimientos_[dia].resize(turnos_.size(), 0);
+  if (dia >= 0 && dia < horizonte_ && turnoIdx >= 0 && (size_t)turnoIdx < turnos_.size()) {
+    if (requerimientos_[dia].size() < turnos_.size()) {
+      requerimientos_[dia].resize(turnos_.size(), 0);
+    }
     requerimientos_[dia][turnoIdx] = valor;
   }
 }
 
 int
 InstanciaPlanificacion::getSatisfaccion(int empIdx, int dia, int turnoIdx) const {
-  if (empIdx < satisfaccion_.size() && dia < horizonte_ && turnoIdx < turnos_.size()) {
+  if (empIdx >= 0 && static_cast<size_t>(empIdx) < satisfaccion_.size() && 
+    dia >= 0 && dia < horizonte_ && 
+    turnoIdx >= 0 && static_cast<size_t>(turnoIdx) < turnos_.size()) {
     return satisfaccion_[empIdx][dia][turnoIdx];
   }
   return 0;
@@ -98,18 +109,16 @@ InstanciaPlanificacion::getSatisfaccion(int empIdx, int dia, int turnoIdx) const
 
 int
 InstanciaPlanificacion::getMinEmpleados(int dia, int turnoIdx) const {
-  if (dia < horizonte_ && turnoIdx < turnos_.size()) {
+  if (dia >= 0 && dia < horizonte_ && 
+    turnoIdx >= 0 && static_cast<size_t>(turnoIdx) < turnos_.size()) {
     return requerimientos_[dia][turnoIdx];
   }
   return 0;
 }
 
 int
-InstanciaPlanificacion::getDiasDescansoEmpleado(int empIdx) const {
-  if (empIdx < empleados_.size()) {
-    return empleados_[empIdx].diasDescanso;
-  }
-  return 0;
+InstanciaPlanificacion::getDiasDescansoRequeridos(int empIdx) const {
+  return (empIdx >= 0 && static_cast<size_t>(empIdx) < empleados_.size()) ? empleados_[empIdx].diasDescanso : 0;
 }
 
 int

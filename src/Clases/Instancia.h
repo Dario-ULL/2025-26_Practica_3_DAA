@@ -22,9 +22,7 @@ class Instancia {
   Instancia() = default;
   virtual ~Instancia() = default;
   
-  virtual std::vector<int> getVector() const = 0;
-  virtual int getSize() const = 0;
-  //virtual std::any getSize() const = 0;
+  virtual std::any getSize() const = 0;
   virtual std::any getValue(std::any) const = 0;
   virtual void setValue(std::any, std::any) = 0;
   virtual void pushValue(std::any) = 0;

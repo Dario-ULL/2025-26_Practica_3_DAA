@@ -23,9 +23,9 @@ class InstanciaVector : public Instancia {
 	InstanciaVector(std::vector<int>);
 	~InstanciaVector() = default;
 
-	std::vector<int> getVector() const override;
-	int getSize() const override;
-	//std::any getSize() const override;
+	std::vector<int> getVector() const;
+	
+	std::any getSize() const override;
 	std::any getValue(std::any) const override;
 	void setValue(std::any, std::any) override;
 	void pushValue(std::any) override;

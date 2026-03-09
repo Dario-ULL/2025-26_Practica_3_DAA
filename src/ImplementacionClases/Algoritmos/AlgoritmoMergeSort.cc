@@ -12,40 +12,39 @@
 #include "../../Clases/Algoritmos/AlgoritmoMergeSort.h"
 
 bool 
-AlgoritmoMergeSort::esPequeño(Instancia* instancia){
-  if (std::any_cast<int>(instancia->getSize()) <= 1) {
-    return true;
+AlgoritmoMergeSort::esPequeño(Instancia* instancia) {
+  try {
+    if (std::any_cast<size_t>(instancia->getSize()) <= 1) {
+      return true;
+    }
+  } catch (const std::bad_any_cast& e) {
+    std::cerr << "Error: No se pudo convertir el tamaño de la instancia a size_t. AlgoritmoMergeSort" << e.what() << std::endl;
   }
   return false;
 }
 
 Solucion* 
-AlgoritmoMergeSort::resolverPequeño(Instancia* instancia){
-  std::vector<int> datos;
-  for(size_t i = 0; i < std::any_cast<size_t>(instancia->getSize()); ++i) {
-    datos.push_back(std::any_cast<int>(instancia->getValue(i)));
-  }
-  Solucion* solucion = new SolucionVector(datos);
+AlgoritmoMergeSort::resolverPequeño(Instancia* instancia) {
+  InstanciaVector* instanciaVector = static_cast<InstanciaVector*>(instancia);
+  Solucion* solucion = new SolucionVector(instanciaVector->getVector());
   return solucion;
 }
 
 std::vector<Instancia*> 
-AlgoritmoMergeSort::dividir(Instancia* instancia){
-  int mid = std::any_cast<int>(instancia->getSize()) / 2;
-  std::vector<Instancia*> subproblemas;
-  Instancia* izquierda = new InstanciaVector(mid);
-  for(int i = 0; i < mid; ++i) {
-      izquierda->setValue(i, instancia->getValue(i));
+AlgoritmoMergeSort::dividir(Instancia* instancia) {
+  InstanciaVector* instanciaVector = static_cast<InstanciaVector*>(instancia);
+  std::vector<int> datos = instanciaVector->getVector();
+  int n = datos.size();
+  int mitad = n / 2;
+  InstanciaVector* subIzq = new InstanciaVector();
+  InstanciaVector* subDer = new InstanciaVector();
+  for (int i = 0; i < mitad; i++) {
+    subIzq->pushValue(datos[i]);
   }
-
-  int tamDerecha = std::any_cast<int>(instancia->getSize()) - mid;
-  Instancia* derecha = new InstanciaVector(tamDerecha);
-  for(int i = 0; i < tamDerecha; ++i) {
-      derecha->setValue(i, instancia->getValue(mid + i));
+  for (int i = mitad; i < n; i++) {
+    subDer->pushValue(datos[i]);
   }
-  subproblemas.push_back(izquierda);
-  subproblemas.push_back(derecha);
-  return subproblemas;
+  return {subIzq, subDer};
 }
 
 Solucion* 
