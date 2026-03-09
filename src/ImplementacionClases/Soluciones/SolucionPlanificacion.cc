@@ -15,6 +15,51 @@ SolucionPlanificacion::SolucionPlanificacion() : numEmpleados_(0), horizonte_(0)
   matrizAsignacion_.clear();
 }
 
+SolucionPlanificacion::SolucionPlanificacion(int numEmpleados, int horizonte) : numEmpleados_(numEmpleados), horizonte_(horizonte), calidad_(0.0) {
+  matrizAsignacion_.resize(numEmpleados, std::vector<int>(horizonte, -1));
+}
+
+void
+SolucionPlanificacion::asignarTurno(int empIdx, int dia, int turnoIdx) {
+  if (empIdx >= 0 && empIdx < numEmpleados_ && dia >= 0 && dia < horizonte_) {
+    if (matrizAsignacion_.size() < static_cast<size_t>(numEmpleados_)) {
+      matrizAsignacion_.resize(numEmpleados_, std::vector<int>(horizonte_, -1));
+    }
+    matrizAsignacion_[empIdx][dia] = turnoIdx;
+  }
+}
+
+int
+SolucionPlanificacion::getTurnoAsignado(int empIdx, int dia) const {
+  if (empIdx >= 0 && empIdx < numEmpleados_ && dia >=
+      0 && dia < horizonte_ && 
+      empIdx < static_cast<int>(matrizAsignacion_.size()) && 
+      dia < static_cast<int>(matrizAsignacion_[empIdx].size())) {
+    return matrizAsignacion_[empIdx][dia];
+  }
+  return -1;
+}
+
+void
+SolucionPlanificacion::setCalidad(double calidad) {
+  calidad_ = calidad;
+}
+
+double
+SolucionPlanificacion::getCalidad() const {
+  return calidad_;
+}
+
+int
+SolucionPlanificacion::getHorizonte() const {
+  return horizonte_;
+}
+
+int 
+SolucionPlanificacion::getNumEmpleados() const {
+  return numEmpleados_;
+}
+
 std::any
 SolucionPlanificacion::getSolution() const {
   return matrizAsignacion_;

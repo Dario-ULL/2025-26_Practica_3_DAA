@@ -1,3 +1,9 @@
-Instancia Inicial: [78] [19] [45] [51] [16] [80] [65] [86] [10] [43] 
-Resuelto con el algoritmo: Merge Sort
-Solucion: [10] [16] [19] [43] [45] [51] [65] [78] [80] [86] 
+Instancia Inicial: [69] [96] [52] [39] [8] [53] [4] [98] [52] 
+Resuelto con el algoritmo: Algoritmo de Planificacion
+Solucion: Matriz de Asignación (Empleados x Días):
+Empleado 0: [0] [0] [0] [0] [0] [0] [2] 
+Empleado 1: [-1] [-1] [1] [1] [1] [1] [1] 
+Empleado 2: [-1] [2] [2] [2] [2] [2] [-1] 
+Empleado 3: [1] [1] [-1] [-1] [-1] [-1] [0] 
+Empleado 4: [2] [-1] [-1] [-1] [-1] [-1] [-1] 
+Calidad de la Solución: 2194

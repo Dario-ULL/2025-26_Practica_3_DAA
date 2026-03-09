@@ -17,12 +17,19 @@
 class SolucionPlanificacion : public Solucion {
  public:
   SolucionPlanificacion();
+  SolucionPlanificacion(int, int);
   ~SolucionPlanificacion() = default;
 
-  std::any getSolution() const override;
-  void setSolution(std::any solution) override;
-  void mostrarSolucion(std::ostream& os) const override;
+  void asignarTurno(int, int, int);
+  int getTurnoAsignado(int, int) const;
+  void setCalidad(double);
+  double getCalidad() const;
+  int getHorizonte() const;
+  int getNumEmpleados() const;
 
+  std::any getSolution() const override;
+  void setSolution(std::any) override;
+  void mostrarSolucion(std::ostream&) const override;
  private:
   std::vector<std::vector<int>> matrizAsignacion_;
   int numEmpleados_;

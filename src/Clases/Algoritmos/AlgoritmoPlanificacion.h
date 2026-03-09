@@ -23,14 +23,20 @@ class InstanciaPlanificacion;
 class AlgoritmoPlanificacion : public DivideYVenceras {
  public:
   AlgoritmoPlanificacion() = default;
+  AlgoritmoPlanificacion(InstanciaPlanificacion*);
   ~AlgoritmoPlanificacion() = default;
 
+  double calcularCalidad(SolucionPlanificacion*, InstanciaPlanificacion*, int, int);
+  int contarDiasTrabajados(SolucionPlanificacion*, int);
+  
   bool esPequeño(Instancia*) override;
   Solucion* resolverPequeño(Instancia*) override;
   std::vector<Instancia*> dividir(Instancia*) override;
   Solucion* combinarSolucion(std::vector<Solucion*>) override;
 
   std::string algoritmo() const override;
+ private:
+  InstanciaPlanificacion* instanciaOriginal_;
 };
 
 #endif

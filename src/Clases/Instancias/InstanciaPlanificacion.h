@@ -29,31 +29,33 @@ class InstanciaPlanificacion : public Instancia {
 
   // Métodos obligatorios de la interfaz Instancia (Patrón Template)
   std::any getSize() const override; 
-  std::any getValue(std::any key) const override;
-  void setValue(std::any key, std::any value);
-  void pushValue(std::any value) override;
-  void mostrarValores(std::ostream& os) const override;
+  std::any getValue(std::any) const override;
+  void setValue(std::any, std::any);
+  void pushValue(std::any) override;
+  void mostrarValores(std::ostream&) const override;
 
   // Configuración (Usada por LeerFichero JSON)
-  void setHorizonte(int dias);
-  void añadirEmpleado(const std::string& nombre, int diasDescanso);
-  void añadirTurno(const std::string& idTurno);
-  void setSatisfaccion(int empIdx, int dia, int turnoIdx, int valor);
-  void setMinEmpleados(int dia, int turnoIdx, int valor);
+  void setHorizonte(int);
+  void añadirEmpleado(const std::string&, int);
+  void añadirTurno(const std::string&);
+  void setSatisfaccion(int, int, int, int);
+  void setMinEmpleados(int, int, int);
 
   // Consultas para el Algoritmo (Datos A, B, C)
-  int getSatisfaccion(int empIdx, int dia, int turnoIdx) const;
-  int getMinEmpleados(int dia, int turnoIdx) const;
-  int getDiasDescansoRequeridos(int empIdx) const;
+  std::vector<int> getEmpleadosOrdenadosPorSatisfaccion(int, int) const;
+  int getHorizonte() const;
+  int getSatisfaccion(int, int, int) const;
+  int getMinEmpleados(int, int) const;
+  int getDiasDescansoRequeridos(int) const;
   int getNumEmpleados() const;
   int getNumTurnos() const;
 
  private:
   int horizonte_; // D (Días)
   std::vector<Empleado> empleados_; // E (Empleados)
-  std::vector<std::string> turnos_;    // T (Turnos)
+  std::vector<std::string> turnos_; // T (Turnos)
   std::vector<std::vector<std::vector<int>>> satisfaccion_; // A[e][d][t]
-  std::vector<std::vector<int>> requerimientos_;   // B[d][t]
+  std::vector<std::vector<int>> requerimientos_; // B[d][t]
 };
 
 #endif

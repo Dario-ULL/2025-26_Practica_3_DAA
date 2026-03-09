@@ -15,7 +15,9 @@
 #include "Instancia.h"
 #include "Solucion.h"
 #include "Soluciones/SolucionVector.h"
+#include "Soluciones/SolucionPlanificacion.h"
 #include "Instancias/InstanciaVector.h"
+#include "Instancias/InstanciaPlanificacion.h"
 
 #include <string>
 #include <any>

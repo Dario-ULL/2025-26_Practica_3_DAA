@@ -24,6 +24,7 @@
 #include "Clases/Escribir.h"
 #include "Clases/Algoritmos/AlgoritmoMergeSort.h"
 #include "Clases/Algoritmos/AlgoritmoQuickSort.h"
+#include "Clases/Algoritmos/AlgoritmoPlanificacion.h"
 #include "Clases/Instancias/InstanciaVector.h"
 #include "Clases/Instancias/InstanciaPlanificacion.h"
 
@@ -49,6 +50,7 @@ int main(int argc, char* argv[]) {
   std::string nombreArchivo = "../resultados/resultados1.txt";
   std::ofstream archivo(nombreArchivo);
 
+  /*
   solucion = new SolucionVector();
   // EJEMPLO DE USO CON MERGE SORT
   algoritmo = new AlgoritmoMergeSort();
@@ -60,7 +62,19 @@ int main(int argc, char* argv[]) {
   algoritmo = new AlgoritmoQuickSort();
   solucion = algoritmo->Resolver(vector_instancias[1]);
   escritor.mostrarResultados(archivo, vector_instancias[1], solucion, algoritmo);
-  escritor.mostrarResultados(std::cout, vector_instancias[1], solucion, algoritmo);
+  escritor.mostrarResultados(std::cout, vector_instancias[1], solucion, algoritmo);  
+  */
+
+  solucion = new SolucionPlanificacion();
+  //EJEMPLO DE USO ALGORITMO PLANIFICACION
+  std::string json = "../json/instance_horizon7_employees5_shifts3_000.json";
+  LeerFichero lector;
+  InstanciaPlanificacion* instanciaOriginal = lector.leerFichero(json);
+  std::cout << "archivo leido" << std::endl;
+  algoritmo = new AlgoritmoPlanificacion(instanciaOriginal);
+  solucion = algoritmo->Resolver(instanciaOriginal);
+  escritor.mostrarResultados(archivo, vector_instancias[0], solucion, algoritmo);
+  escritor.mostrarResultados(std::cout, vector_instancias[0], solucion, algoritmo);   
 
   archivo.close();
 

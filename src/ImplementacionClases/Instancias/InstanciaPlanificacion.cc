@@ -97,6 +97,30 @@ InstanciaPlanificacion::setMinEmpleados(int dia, int turnoIdx, int valor) {
   }
 }
 
+
+std::vector<int> 
+InstanciaPlanificacion::getEmpleadosOrdenadosPorSatisfaccion(int dia, int turnoIdx) const {
+  std::vector<std::pair<int, int>> empSatisfaccion;
+  for (size_t empIdx = 0; empIdx < satisfaccion_.size(); ++empIdx) {
+    if (dia >= 0 && dia < horizonte_ && turnoIdx >= 0 && static_cast<size_t>(turnoIdx) < turnos_.size()) {
+      empSatisfaccion.emplace_back(empIdx, satisfaccion_[empIdx][dia][turnoIdx]);
+    }
+  }
+  std::sort(empSatisfaccion.begin(), empSatisfaccion.end(), [](const auto& a, const auto& b) {
+    return a.second > b.second;
+  });
+  std::vector<int> empleadosOrdenados;
+  for (const auto& pair : empSatisfaccion) {
+    empleadosOrdenados.push_back(pair.first);
+  }
+  return empleadosOrdenados;
+}
+
+int 
+InstanciaPlanificacion::getHorizonte() const {
+  return horizonte_;
+}
+
 int
 InstanciaPlanificacion::getSatisfaccion(int empIdx, int dia, int turnoIdx) const {
   if (empIdx >= 0 && static_cast<size_t>(empIdx) < satisfaccion_.size() && 

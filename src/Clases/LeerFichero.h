@@ -26,7 +26,7 @@ class LeerFichero {
   LeerFichero() = default;
   ~LeerFichero() = default;
 
-  Instancia* leerFichero(const std::string& nombreFichero);
+  InstanciaPlanificacion* leerFichero(const std::string& nombreFichero);
 };
 
 #endif

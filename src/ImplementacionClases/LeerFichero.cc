@@ -11,9 +11,9 @@
 
 #include "../Clases/LeerFichero.h"
 
-Instancia* 
+InstanciaPlanificacion* 
 LeerFichero::leerFichero(const std::string& nombreFichero) {
-std::ifstream file(nombreFichero);
+	std::ifstream file(nombreFichero);
 	nlohmann::json j;
 	file >> j;
 

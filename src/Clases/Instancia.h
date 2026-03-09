@@ -16,6 +16,7 @@
 #include <fstream>
 #include <vector>
 #include <any>
+#include <algorithm>
 
 class Instancia {
  public:
