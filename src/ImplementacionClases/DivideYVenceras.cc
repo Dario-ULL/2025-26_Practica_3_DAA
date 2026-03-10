@@ -11,6 +11,7 @@
 
 #include "../Clases/DivideYVenceras.h"
 
+// Método plantilla para resolver el problema usando divide y vencerás
 Solucion* DivideYVenceras::Resolver(Instancia* instancia){
   if (esPequeño(instancia)) {
     return resolverPequeño(instancia);

@@ -76,6 +76,7 @@ compararMergeQuickSort(std::vector<Instancia*> vector_instancias){
   Algoritmo* algoritmo_merge = new AlgoritmoMergeSort();
   solucion = new SolucionVector();
 
+  
   std::cout << "Instancia \t  Tamaño\t QuickSort \t MergeSort" << std::endl;
   for(size_t it = 0; it < vector_instancias.size(); it++){
     auto instancia_size = std::any_cast<size_t>(vector_instancias[it]->getSize());
@@ -171,8 +172,8 @@ resolverPlanificador(std::string nombre_fichero){
   InstanciaPlanificacion* instanciaOriginal = lector.leerFichero(json);
   algoritmo = new AlgoritmoPlanificacion(instanciaOriginal);
   solucion = algoritmo->Resolver(instanciaOriginal);
-  escritor.mostrarResultados(archivo, vector_instancias[0], solucion, algoritmo);
-  escritor.mostrarResultados(std::cout, vector_instancias[0], solucion, algoritmo);   
+  escritor.mostrarResultados(archivo, solucion, algoritmo);
+  escritor.mostrarResultados(std::cout, solucion, algoritmo);   
   archivo.close();
 }
 
@@ -237,7 +238,7 @@ int main(int argc, char* argv[]) {
       break;
 
     case 4:
-      std::cout << "1. Usar el archivo por defecto" << std::endl;
+      std::cout << "1. Usar el archivo por defecto (instance_horizon7_employees5_shifts3_000.json)" << std::endl;
       std::cout << "2. Elegir el archivo a usar" << std::endl;
       std::cin >> archivo_base;
       if (archivo_base == 1)

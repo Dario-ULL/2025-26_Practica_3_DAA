@@ -11,29 +11,35 @@
 
 #include "../../Clases/Soluciones/SolucionVector.h"
 
+// Constructor por defecto
 SolucionVector::SolucionVector () {
   solucionVector_.resize(0);
 }
 
+// Constructor pasando los valores mediante un vector
 SolucionVector::SolucionVector (std::vector<int> solution) {
   solucionVector_ = solution;
 }
 
+// Devuelve el vector
 std::vector<int>
 SolucionVector::getVector() const {
   return solucionVector_;
 }
 
+// Devuelve el tamaño de la instancia (el vector)
 int 
 SolucionVector::getSize() const {
   return solucionVector_.size();
 }
 
+// Retorna el valor en la posicion dada
 int 
 SolucionVector::getValue(int pos) const {
   return solucionVector_[pos];
 }
 
+// Cambia los valores de la solucion a los dados por el vector de la solucion nueva
 void
 SolucionVector::setSolution(std::any solution) {
   try {
@@ -43,11 +49,13 @@ SolucionVector::setSolution(std::any solution) {
   }
 }
 
+// Devuelve el vector
 std::any
 SolucionVector::getSolution() const {
   return solucionVector_;
 }
 
+// Muestra los valores de la solucion
 void
 SolucionVector::mostrarSolucion(std::ostream& os) const {
   for(size_t it = 0; it < solucionVector_.size(); it++){

@@ -11,11 +11,19 @@
 
 #include "../Clases/Escribir.h"
 
+// Método para mostrar por pantalla/archivo la instancia del problema
 void 
 Escribir::mostrarResultados(std::ostream& os, Instancia* instancia, Solucion* solucion, Algoritmo* algoritmo) const {
   os << "Resuelto con el algoritmo: " << algoritmo->algoritmo() << std::endl;
-  os << "Instancia Inicial: ";
-  instancia->mostrarValores(os);
+  instancia->mostrarValores(os);    
+  os << "Solucion: ";
+  solucion->mostrarSolucion(os);
+}
+
+// Método para mostrar por pantalla/archivo la solucion del problema
+void 
+Escribir::mostrarResultados(std::ostream& os, Solucion* solucion, Algoritmo* algoritmo) const {
+  os << "Resuelto con el algoritmo: " << algoritmo->algoritmo() << std::endl;
   os << "Solucion: ";
   solucion->mostrarSolucion(os);
 }

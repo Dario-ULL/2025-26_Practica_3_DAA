@@ -11,9 +11,11 @@
 
 #include "../../Clases/Algoritmos/AlgoritmoPlanificacion.h"
 
+// Constructor de clase
 AlgoritmoPlanificacion::AlgoritmoPlanificacion(InstanciaPlanificacion* instancia) {
   instanciaOriginal_ = instancia;
 }
+
 
 double
 AlgoritmoPlanificacion::calcularCalidad(SolucionPlanificacion* solucion, InstanciaPlanificacion* instanciaPlanificacion, int numEmp, int numTurnos) {

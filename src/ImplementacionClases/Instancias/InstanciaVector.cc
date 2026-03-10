@@ -11,21 +11,26 @@
 
 #include "../../Clases/Instancias/InstanciaVector.h"
 
+// Constructor por defecto
 InstanciaVector::InstanciaVector() {
   instanciaVector_.resize(0);
 }
 
+// Constructor pasando el tamaño
 InstanciaVector::InstanciaVector(int size) : instanciaVector_(size, 0) {}
 
+// Constructor pasando los valores mediante un vector
 InstanciaVector::InstanciaVector(std::vector<int> vector) {
   instanciaVector_ = vector;
 }
 
+// Devuelve el vector
 std::vector<int> 
 InstanciaVector::getVector() const{
   return instanciaVector_;
 }
 
+// Retorna el valor en la posicion dada
 int
 InstanciaVector::getValue(int pos) const {
   try {
@@ -41,11 +46,13 @@ InstanciaVector::getValue(int pos) const {
   }
 }
 
+// Devuelve el tamaño de la instancia (el vector)
 std::any 
 InstanciaVector::getSize() const {
   return instanciaVector_.size();
 }
 
+// Cambia el valor de la posición dada
 void 
 InstanciaVector::setValue(int pos, int valor) {
   try {
@@ -59,11 +66,13 @@ InstanciaVector::setValue(int pos, int valor) {
   }
 }
 
+// Añade el valor al vector como un elemento nuevo
 void
 InstanciaVector::pushValue(int valor){
   instanciaVector_.push_back(valor);
 }
 
+// Muestra los valores de la instancia
 void 
 InstanciaVector::mostrarValores(std::ostream& os) const {
   for(size_t it = 0; it < instanciaVector_.size(); it++){

@@ -11,6 +11,7 @@
 
 #include "../../Clases/Algoritmos/AlgoritmoMergeSort.h"
 
+// Implementación del mergesort para averigua si estamos en la instancia "pequeña"
 bool 
 AlgoritmoMergeSort::esPequeño(Instancia* instancia) {
   try {
@@ -23,6 +24,7 @@ AlgoritmoMergeSort::esPequeño(Instancia* instancia) {
   return false;
 }
 
+// Implementación del mergesort para resolver la instancia "pequeña"
 Solucion* 
 AlgoritmoMergeSort::resolverPequeño(Instancia* instancia) {
   InstanciaVector* instanciaVector = static_cast<InstanciaVector*>(instancia);
@@ -30,6 +32,7 @@ AlgoritmoMergeSort::resolverPequeño(Instancia* instancia) {
   return solucion;
 }
 
+// Implementación del mergesort para dividir la instancia en dos subinstancias
 std::vector<Instancia*> 
 AlgoritmoMergeSort::dividir(Instancia* instancia) {
   InstanciaVector* instanciaVector = static_cast<InstanciaVector*>(instancia);
@@ -47,6 +50,7 @@ AlgoritmoMergeSort::dividir(Instancia* instancia) {
   return {subIzq, subDer};
 }
 
+// Implementación del mergesort para combinar las subinstancias
 Solucion* 
 AlgoritmoMergeSort::combinarSolucion(std::vector<Solucion*> subSoluciones){
   SolucionVector* solucionIzq = static_cast<SolucionVector*>(subSoluciones[0]);
@@ -70,7 +74,7 @@ AlgoritmoMergeSort::combinarSolucion(std::vector<Solucion*> subSoluciones){
   return solucionFinal;  
 }
 
-
+// Método que devuelve el tipo de algoritmo
 std::string
 AlgoritmoMergeSort::algoritmo() const {
   return "Merge Sort";

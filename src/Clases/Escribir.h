@@ -30,6 +30,7 @@ class Escribir {
   ~Escribir() = default;
 
   void mostrarResultados(std::ostream&, Instancia*, Solucion*, Algoritmo*) const;
+  void mostrarResultados(std::ostream&, Solucion*, Algoritmo*) const;
 };
 
 #endif

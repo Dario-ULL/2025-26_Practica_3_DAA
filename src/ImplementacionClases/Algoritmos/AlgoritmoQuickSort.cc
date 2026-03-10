@@ -11,6 +11,7 @@
 
 #include "../../Clases/Algoritmos/AlgoritmoQuickSort.h"
 
+// Implementación del quicksort para averigua si estamos en la instancia "pequeña"
 bool 
 AlgoritmoQuickSort::esPequeño(Instancia* instancia) {
   try {
@@ -23,6 +24,7 @@ AlgoritmoQuickSort::esPequeño(Instancia* instancia) {
   return false;
 }
 
+// Implementación del quicksort para resolver la instancia "pequeña"
 Solucion* 
 AlgoritmoQuickSort::resolverPequeño(Instancia* instancia) {   
   InstanciaVector* instanciaVector = static_cast<InstanciaVector*>(instancia);
@@ -40,6 +42,7 @@ AlgoritmoQuickSort::resolverPequeño(Instancia* instancia) {
   return solucion;
 }
 
+// Implementación del quicksort para la instancia en dos subinstancias
 std::vector<Instancia*> 
 AlgoritmoQuickSort::dividir(Instancia* instancia) {
   InstanciaVector* instanciaVector = static_cast<InstanciaVector*>(instancia);
@@ -66,6 +69,7 @@ AlgoritmoQuickSort::dividir(Instancia* instancia) {
   return {subIzq, subDer};
 }
 
+// Implementación del quicksort para combinar las instancias resueltas
 Solucion* 
 AlgoritmoQuickSort::combinarSolucion(std::vector<Solucion*> subSoluciones) {
 
@@ -85,6 +89,7 @@ AlgoritmoQuickSort::combinarSolucion(std::vector<Solucion*> subSoluciones) {
   return solucionFinal;  
 }
 
+// Método que devuelve el tipo de algoritmo
 std::string
 AlgoritmoQuickSort::algoritmo() const {
   return "Quick Sort";
