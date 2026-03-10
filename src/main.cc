@@ -156,7 +156,7 @@ resolverMergeSort(std::vector<Instancia*> vector_instancias){
 
 // Método para resolver el problema de planificación, usando un archivo por defecto
 void
-resolverPlanificador(){
+resolverPlanificador(std::string nombre_fichero){
   std::vector<Instancia*> vector_instancias = generadorVectorDeVectores(5);
   Algoritmo* algoritmo;
   Solucion* solucion;
@@ -166,7 +166,7 @@ resolverPlanificador(){
 
   solucion = new SolucionPlanificacion();
   //EJEMPLO DE USO ALGORITMO PLANIFICACION
-  std::string json = "../json/instance_horizon7_employees5_shifts3_000.json";
+  std::string json = "../json/" + nombre_fichero;
   LeerFichero lector;
   InstanciaPlanificacion* instanciaOriginal = lector.leerFichero(json);
   algoritmo = new AlgoritmoPlanificacion(instanciaOriginal);
@@ -185,7 +185,9 @@ int main(int argc, char* argv[]) {
   std::cout << "4. Planificador"<< std::endl;
   
   int selector_algoritmo;
+  int archivo_base;
   int modo;
+  std::string nombre_archivo;
   std::cin >> modo;
   std::vector<Instancia*> vector_instancias = generadorVectorDeVectores(5);
   switch (modo){
@@ -235,7 +237,17 @@ int main(int argc, char* argv[]) {
       break;
 
     case 4:
-      resolverPlanificador();
+      std::cout << "1. Usar el archivo por defecto" << std::endl;
+      std::cout << "2. Elegir el archivo a usar" << std::endl;
+      std::cin >> archivo_base;
+      if (archivo_base == 1)
+        resolverPlanificador("instance_horizon7_employees5_shifts3_000.json");
+      else{
+        std::cout << "Introduzca el nombre del archivo" << std::endl;
+        std::cin >> nombre_archivo;
+        resolverPlanificador(nombre_archivo);
+      }
+      //std::string archivo_por_defecto = "instance_horizon7_employees5_shifts3_000.json";
       break;
     default:
       std::cout << "Elija uno de los modos disponibles escribiendo el número correspondiente" << std::endl;
